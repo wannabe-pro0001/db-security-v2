@@ -1,0 +1,31 @@
+server:
+  port: 8080
+  compression:
+    enabled: true
+    excluded-user-agents:
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+    min-response-size: 2048
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dev_24_11_xcorp
+    username: postgres
+    password: postgres
+    driver-class-name: oracle.jdbc.OracleDriver
+    hikari:
+      maximum-pool-size: 50
+      connection-timeout: 30000
+  jpa:
+    properties:
+      javax:
+        persistence:
+          query:
+            timeout: 120000
+      hibernate:
+        dialect: org.hibernate.dialect.Oracle12cDialect
+        ddl-auto: none
+        temp:
+          use_jdbc_metadata_defaults: false
+    jpa:
+      repositories:
+        enabled: true
