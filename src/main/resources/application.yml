@@ -9,22 +9,22 @@ server:
 spring:
   datasource:
     primary:
-      url: jdbc:oracle:thin:@//localhost:1521/ORCLPDB.LOCALDOMAIN
+      url: jdbc:oracle:thin:@//localhost:1521/ORCLPDB
       username: NguoiDung
       password: nguoidung
       driver-class-name: oracle.jdbc.OracleDriver
     xacthuc:
-      url: jdbc:oracle:thin:@//localhost:1521/ORCLPDB.LOCALDOMAIN
+      url: jdbc:oracle:thin:@//localhost:1521/ORCLPDB
       username: XacThuc
       password: xacthuc
       driver-class-name: oracle.jdbc.OracleDriver
     xetduyet:
-      url: jdbc:oracle:thin:@//localhost:1521/ORCLPDB.LOCALDOMAIN
+      url: jdbc:oracle:thin:@//localhost:1521/ORCLPDB
       username: XetDuyet
       pass: xetduyet
       driver-class-name: oracle.jdbc.OracleDriver
     luutru:
-      url: jdbc:oracle:thin:@//localhost:1521/ORCLPDB.LOCALDOMAIN
+      url: jdbc:oracle:thin:@//localhost:1521/ORCLPDB
       username: LuuTru
       pass: luutru
       driver-class-name: oracle.jdbc.OracleDriver
