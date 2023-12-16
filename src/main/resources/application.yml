@@ -8,10 +8,31 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/dev_24_11_xcorp
-    username: postgres
-    password: postgres
-    driver-class-name: oracle.jdbc.OracleDriver
+    primary:
+      url: jdbc:oracle:thin:@//localhost:1521/ORCLPDB.LOCALDOMAIN
+      username: NguoiDung
+      password: nguoidung
+      driver-class-name: oracle.jdbc.OracleDriver
+    xac_thuc:
+      url: jdbc:oracle:thin:@//localhost:1521/ORCLPDB.LOCALDOMAIN
+      username: XacThuc
+      password: xacthuc
+      driver-class-name: oracle.jdbc.OracleDriver
+    xet_duyet:
+      url: jdbc:oracle:thin:@//localhost:1521/ORCLPDB.LOCALDOMAIN
+      username: XetDuyet
+      pass: xetduyet
+      driver-class-name: oracle.jdbc.OracleDriver
+    luu_tru:
+      url: jdbc:oracle:thin:@//localhost:1521/ORCLPDB.LOCALDOMAIN
+      username: LuuTru
+      pass: luutru
+      driver-class-name: oracle.jdbc.OracleDriver
+#    giam_sat:
+#      url: jdbc:oracle:thin:@//localhost:1521/ORCLPDB.LOCALDOMAIN
+#      username: GiamSat
+#      pass: giamsat
+#      driver-class-name: oracle.jdbc.OracleDriver
     hikari:
       maximum-pool-size: 50
       connection-timeout: 30000
@@ -29,3 +50,9 @@ spring:
     jpa:
       repositories:
         enabled: true
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+
