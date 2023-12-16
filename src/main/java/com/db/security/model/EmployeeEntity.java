@@ -1,6 +1,7 @@
 package com.db.security.model;
 
 import com.db.security.model.enum_type.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,5 +23,6 @@ public class EmployeeEntity {
     private Role role;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "residentId", referencedColumnName = "id")
+    @JsonIgnore
     private ResidentEntity resident;
 }
