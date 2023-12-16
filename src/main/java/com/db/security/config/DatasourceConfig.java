@@ -25,15 +25,4 @@ public class DatasourceConfig {
     public DataSource dataSource() {
         return datasourceRoutingConfig;
     }
-
-    @Bean(name = "entityManager")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(EntityManagerFactoryBuilder builder) {
-        return builder.dataSource(dataSource()).packages("com.db.security.service.impl").build();
-    }
-
-    @Bean(name = "transcationManager")
-    public JpaTransactionManager transactionManager(
-            @Autowired @Qualifier("entityManager") LocalContainerEntityManagerFactoryBean entityManagerFactoryBean) {
-        return new JpaTransactionManager(entityManagerFactoryBean.getObject());
-    }
 }
