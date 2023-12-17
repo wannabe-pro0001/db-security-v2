@@ -5,18 +5,20 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(schema = "PASSPORT", name = "userRequest")
+@Table(schema = "PASSPORT", name = "user_request")
+@Accessors(chain = true)
 public class UserRequestEntity {
-    @GeneratedValue
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "fullName")
+    @Column(name = "full_name")
     private String fullName;
 
     @Enumerated(EnumType.STRING)
@@ -28,7 +30,7 @@ public class UserRequestEntity {
 
     private String email;
 
-    @Column(name = "extendDuration")
+    @Column(name = "extend_duration")
     private Integer extendDuration;
 
     private int isAuthenticated;
@@ -38,8 +40,9 @@ public class UserRequestEntity {
     private int isRejected;
 
     private String note;
+    @Column(name = "passport_id")
     private String passportId;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "locationId", referencedColumnName = "id")
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     private LocationEntity location;
 }

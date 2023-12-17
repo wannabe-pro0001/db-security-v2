@@ -23,4 +23,5 @@ public class UserRequest {
     private Integer extendDuration;
 
     private Long locationId;
+    private String passportId;
 }

@@ -17,13 +17,13 @@ public class PassportEntity {
     @Id
     private long id;
 
-    @Column(name = "passportID")
+    @Column(name = "passport_id")
     private String passportID;
 
-    @Column(name = "startDate")
+    @Column(name = "start_date")
     private LocalDate startDate;
 
-    @Column(name = "endDate")
+    @Column(name = "end_date")
     private LocalDate endDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
