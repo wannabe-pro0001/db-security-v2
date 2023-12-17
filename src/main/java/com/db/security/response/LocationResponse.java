@@ -1,4 +1,4 @@
-package com.db.security.request;
+package com.db.security.response;
 
 import lombok.Getter;
 import lombok.Setter;

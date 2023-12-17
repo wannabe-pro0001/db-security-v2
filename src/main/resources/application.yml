@@ -9,25 +9,40 @@ server:
 spring:
   datasource:
     primary:
-      url: jdbc:oracle:thin:@//localhost:1521/ORCLPDB
-      username: NguoiDung
-      password: nguoidung
-      driver-class-name: oracle.jdbc.OracleDriver
+      url: jdbc:postgresql://localhost:5432/local_26_12
+      username: postgres
+      password: postgres
+      driver-class-name: org.postgresql.Driver
     xacthuc:
-      url: jdbc:oracle:thin:@//localhost:1521/ORCLPDB
-      username: XacThuc
-      password: xacthuc
-      driver-class-name: oracle.jdbc.OracleDriver
+      url: jdbc:postgresql://localhost:5432/local_26_12
+      username: postgres
+      password: postgres
+      driver-class-name: org.postgresql.Driver
+    xacthuc1:
+      url: jdbc:postgresql://localhost:5432/local_26_12
+      username: postgres
+      password: postgres
+      driver-class-name: org.postgresql.Driver
+    xacthuc2:
+      url: jdbc:postgresql://localhost:5432/local_26_12
+      username: postgres
+      password: postgres
+      driver-class-name: org.postgresql.Driver
+    xacthuc3:
+      url: jdbc:postgresql://localhost:5432/local_26_12
+      username: postgres
+      password: postgres
+      driver-class-name: org.postgresql.Driver
     xetduyet:
-      url: jdbc:oracle:thin:@//localhost:1521/ORCLPDB
-      username: XetDuyet
-      pass: xetduyet
-      driver-class-name: oracle.jdbc.OracleDriver
+      url: jdbc:postgresql://localhost:5432/local_26_12
+      username: postgres
+      password: postgres
+      driver-class-name: org.postgresql.Driver
     luutru:
-      url: jdbc:oracle:thin:@//localhost:1521/ORCLPDB
-      username: LuuTru
-      pass: luutru
-      driver-class-name: oracle.jdbc.OracleDriver
+      url: jdbc:postgresql://localhost:5432/local_26_12
+      username: postgres
+      password: postgres
+      driver-class-name: org.postgresql.Driver
 #    giam_sat:
 #      url: jdbc:oracle:thin:@//localhost:1521/ORCLPDB.LOCALDOMAIN
 #      username: GiamSat
@@ -43,7 +58,7 @@ spring:
           query:
             timeout: 120000
       hibernate:
-        dialect: org.hibernate.dialect.Oracle12cDialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect
         ddl-auto: none
         temp:
           use_jdbc_metadata_defaults: false

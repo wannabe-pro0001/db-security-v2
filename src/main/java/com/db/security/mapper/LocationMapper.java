@@ -1,7 +1,7 @@
 package com.db.security.mapper;
 
 import com.db.security.model.LocationEntity;
-import com.db.security.request.LocationResponse;
+import com.db.security.response.LocationResponse;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
