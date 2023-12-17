@@ -43,7 +43,7 @@ spring:
           query:
             timeout: 120000
       hibernate:
-        dialect: org.hibernate.dialect.Oracle12cDialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect
         ddl-auto: none
         temp:
           use_jdbc_metadata_defaults: false
