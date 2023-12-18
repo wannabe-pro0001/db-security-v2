@@ -18,7 +18,13 @@ public class PassportController {
     @GetMapping("")
     private String getAlLPassport(Model model, @RequestParam(value = "keyword", required = false) String keyword) {
         System.out.println("Keyword: " + keyword);
-        model.addAttribute("passports", passportService.getListPassport(keyword));
+        if (keyword.equals("LuuTru")) {
+            model.addAttribute("passports", passportService.getListLuuTru_Passport());
+        }
+        else{
+            model.addAttribute("passports", passportService.getListPassport(keyword));
+        }
+        model.addAttribute("keyword", keyword);
         return "passport";
     }
 }

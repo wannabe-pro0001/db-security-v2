@@ -47,21 +47,30 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponse getUser(String passportId) {
+        dataSourceContextHolder.setBranchContext(DatasourceType.PRIMARY);
         return userMapper.toResponse(userRequestRepository.findByPassportId(passportId));
     }
 
     @Override
     public List<UserResponse> getAllUser(String username) {
+        switch (username) {
+            case "XacThucQuan1" -> dataSourceContextHolder.setBranchContext(DatasourceType.XAC_THUC_1);
+            case "XacThucQuan2" -> dataSourceContextHolder.setBranchContext(DatasourceType.XAC_THUC_2);
+            case "XacThucQuan3" -> dataSourceContextHolder.setBranchContext(DatasourceType.XAC_THUC_3);
+            case "XacThuc" -> dataSourceContextHolder.setBranchContext(DatasourceType.XAC_THUC);
+        }
         return userRequestRepository.findAll().stream().map(userMapper::toResponse).toList();
     }
 
     @Transactional
     @Override
     public void modifyUser(long id, int value) {
-        dataSourceContextHolder.setBranchContext(DatasourceType.XAC_THUC);
         UserRequestEntity entity = userRequestRepository.findById(id).orElseThrow(RuntimeException::new);
-        entity.setIsAuthenticated(value);
-        userRequestRepository.save(entity);
+        if (entity != null) {
+            userRequestRepository.AuthenticateUserRequest(id);
+        }
+        // entity.setIsAuthenticated(value);
+        // userRequestRepository.save(entity);
     }
 
     @Transactional
@@ -77,5 +86,46 @@ public class UserServiceImpl implements UserService {
             entity.setIsRejected(1);
         }
         userRequestRepository.save(entity);
+    }
+
+    @Override
+    public void AuthenticateUserRequest(long id, String username) {
+        switch(username){
+            case "XacThucQuan1" -> dataSourceContextHolder.setBranchContext(DatasourceType.XAC_THUC_1);
+            case "XacThucQuan2" -> dataSourceContextHolder.setBranchContext(DatasourceType.XAC_THUC_2);
+            case "XacThucQuan3" -> dataSourceContextHolder.setBranchContext(DatasourceType.XAC_THUC_3);
+            case "XacThuc" -> dataSourceContextHolder.setBranchContext(DatasourceType.XAC_THUC);
+        }
+        try{
+            userRequestRepository.AuthenticateUserRequest(id);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Override
+    public void ApproveUserRequest(long id, String username) {
+        dataSourceContextHolder.setBranchContext(DatasourceType.XET_DUYET);
+        try{
+            userRequestRepository.ApproveUserRequest(id);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Override
+    public void RejectUserRequest(long id, String username) {
+        switch(username){
+            case "XacThucQuan1" -> dataSourceContextHolder.setBranchContext(DatasourceType.XAC_THUC_1);
+            case "XacThucQuan2" -> dataSourceContextHolder.setBranchContext(DatasourceType.XAC_THUC_2);
+            case "XacThucQuan3" -> dataSourceContextHolder.setBranchContext(DatasourceType.XAC_THUC_3);
+            case "XacThuc" -> dataSourceContextHolder.setBranchContext(DatasourceType.XAC_THUC);
+            case "XetDuyet" -> dataSourceContextHolder.setBranchContext(DatasourceType.XET_DUYET);
+        }
+        try{
+            userRequestRepository.ApproveUserRequest(id);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }

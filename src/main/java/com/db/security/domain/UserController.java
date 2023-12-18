@@ -55,7 +55,7 @@ public class UserController {
     @GetMapping("/view-all")
     public String getAllUser(@ModelAttribute("userPrincipal") String userPrincipal, Model model) {
         model.addAttribute("keyword", userPrincipal);
-        System.out.println(userPrincipal);
+        System.out.println("user principal: " + userPrincipal);
         model.addAttribute("users", userService.getAllUser(userPrincipal));
         if (userPrincipal.equals("XetDuyet")) {
             return "list_user_xet_duyet";
@@ -67,25 +67,28 @@ public class UserController {
 
     @GetMapping("/xt-approve/{id}")
     public String xacThucApprove(@PathVariable long id, @ModelAttribute("userPrincipal") String userPrincipal, RedirectAttributes redirectAttributes) {
-        redirectAttributes.addAttribute("userPrincipal", userPrincipal);
-        userService.modifyUser(id, 1);
+        redirectAttributes.addAttribute("userPrincipal", userPrincipal); // cannot get userPrincipal
+        // userService.modifyUser(id, 1);
+        userService.AuthenticateUserRequest(id, "XacThucQuan2");
         return "redirect:/user/view-all";
     }
     @GetMapping("/xt-reject/{id}")
     public String xacThucReject(@PathVariable long id, @ModelAttribute("userPrincipal") String userPrincipal, RedirectAttributes redirectAttributes) {
         redirectAttributes.addAttribute("userPrincipal", userPrincipal);
-        userService.modifyUser(id, 0);
+        userService.RejectUserRequest(id, "XacThucQuan2");
         return "redirect:/user/view-all";
     }
 
     @GetMapping("/xd-approve/{id}")
     public String xetDuyetApprove(@PathVariable long id) {
-        userService.modifyUserXetDuyet(id, true);
+        // userService.modifyUserXetDuyet(id, true);
+        userService.ApproveUserRequest(id, "XetDuyet");
         return "redirect:/user/view-all";
     }
     @GetMapping("/xd-reject/{id}")
     public String xetDuyetReject(@PathVariable long id) {
-        userService.modifyUserXetDuyet(id, false);
+        // userService.modifyUserXetDuyet(id, false);
+        userService.RejectUserRequest(id, "XetDuyet");
         return "redirect:/user/view-all";
     }
 

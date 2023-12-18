@@ -18,15 +18,30 @@ spring:
       username: XacThuc
       password: xacthuc
       driver-class-name: oracle.jdbc.OracleDriver
+    xacthuc1:
+      url: jdbc:oracle:thin:@//192.168.0.103:1521/orclpdb.localdomain
+      username: XacThucQuan1
+      password: xacthuc
+      driver-class-name: oracle.jdbc.OracleDriver
+    xacthuc2: 
+      url: jdbc:oracle:thin:@//192.168.0.103:1521/orclpdb.localdomain
+      username: XacThucQuan2
+      password: xacthuc
+      driver-class-name: oracle.jdbc.OracleDriver
+    xacthuc3: 
+      url: jdbc:oracle:thin:@//192.168.0.103:1521/orclpdb.localdomain
+      username: XacThucQuan3
+      password: xacthuc
+      driver-class-name: oracle.jdbc.OracleDriver
     xetduyet:
       url: jdbc:oracle:thin:@//192.168.0.103:1521/orclpdb.localdomain
       username: XetDuyet
-      pass: xetduyet
+      password: xetduyet
       driver-class-name: oracle.jdbc.OracleDriver
     luutru:
       url: jdbc:oracle:thin:@//192.168.0.103:1521/orclpdb.localdomain
       username: LuuTru
-      pass: luutru
+      password: luutru
       driver-class-name: oracle.jdbc.OracleDriver
 #    giam_sat:
 #      url: jdbc:oracle:thin:@//localhost:1521/orclpdb.localdomainPDB.LOCALDOMAIN

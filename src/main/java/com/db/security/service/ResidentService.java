@@ -5,5 +5,5 @@ import com.db.security.response.ResidentResponse;
 import java.util.List;
 
 public interface ResidentService {
-    List<ResidentResponse> getAllResident();
+    List<ResidentResponse> getAllResident(String username);
 }

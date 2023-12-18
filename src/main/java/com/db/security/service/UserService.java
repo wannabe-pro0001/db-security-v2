@@ -12,7 +12,11 @@ public interface UserService {
     UserResponse getUser(String passportId);
     List<UserResponse> getAllUser(String username);
 
-    void modifyUser(long id, int value);
+    void modifyUser(long id, int value); // đường cùng viết v cho nhanh =))
 
     void modifyUserXetDuyet(long id, boolean value);
+
+    void AuthenticateUserRequest(long id, String username);
+    void ApproveUserRequest(long id, String username);
+    void RejectUserRequest(long id, String username);
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/resident")
@@ -14,8 +15,9 @@ public class ResidentController {
     private final ResidentService residentService;
 
     @GetMapping("")
-    public String getAllResident(Model model) {
-        model.addAttribute("residents", residentService.getAllResident());
+    public String getAllResident(Model model, @RequestParam(value = "keyword", required = false) String keyword) {
+        System.out.println(keyword);
+        model.addAttribute("residents", residentService.getAllResident(keyword));
         return "resident";
     }
 }
